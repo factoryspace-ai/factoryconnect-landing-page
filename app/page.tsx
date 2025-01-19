@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { SignInButton, SignUpButton, useAuth } from "@clerk/nextjs";
 import { Card } from "@/components/ui/card";
 import { MsmeList } from "@/components/msme/msme-list";
-import { Navbar } from "@/components/layout/navbar";
+import { Navbar } from "@/components/lyt/navbar";
 import { Spotlight } from "@/components/ui/spotlight";
 
 export default function Home() {
