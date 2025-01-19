@@ -1,24 +1,17 @@
 import { NextResponse } from "next/server";
-import { auth } from "@clerk/nextjs/server";
+import { auth, currentUser } from "@clerk/nextjs/server";
 import { getMsmesByUserEmail } from "@/lib/msme-utils";
 
 export async function GET() {
   try {
-    const { userId } = await auth();
+    const { userId } =await auth();
+    const user = await currentUser();
 
-    if (!userId) {
+    if (!userId || !user) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
-    const response = await fetch(`https://api.clerk.dev/v1/users/${userId}`, {
-      headers: {
-        Authorization: `Bearer ${process.env.CLERK_SECRET_KEY}`,
-      },
-    });
-
-    const clerkUser = await response.json();
-    const userEmail = clerkUser.email_addresses[0].email_address.toLowerCase();
-    
+    const userEmail = user.emailAddresses[0].emailAddress.toLowerCase();
     const userMsmes = await getMsmesByUserEmail(userEmail);
 
     if (!userMsmes || userMsmes.length === 0) {
@@ -31,3 +24,5 @@ export async function GET() {
     return new NextResponse("Internal Error", { status: 500 });
   }
 }
+
+export const dynamic = "force-dynamic";
