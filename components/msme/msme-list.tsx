@@ -62,7 +62,7 @@ export function MsmeList() {
     );
   }
 
-  // if (msmes.length === 0) {
+  if (msmes.length === 0) {
     return (
       <Card className="p-6 w-full shadow-lg bg-zinc-900 border-zinc-700">
         <div className="text-center space-y-4">
@@ -79,39 +79,39 @@ export function MsmeList() {
         </div>
       </Card>
     );
-  // }
+  }
 
-//   return (
-//     <Card className="p-6 w-full shadow-lg bg-zinc-900 border-zinc-700">
-//       <div className="space-y-6">
-//         <div className="flex justify-between items-center">
-//           <h2 className="text-xl font-semibold text-white">Your Organization</h2>
-//         </div>
+  return (
+    <Card className="p-6 w-full shadow-lg bg-zinc-900 border-zinc-700">
+      <div className="space-y-6">
+        <div className="flex justify-between items-center">
+          <h2 className="text-xl font-semibold text-white">Your Organization</h2>
+        </div>
 
-//         <div className="space-y-3">
-//           {msmes.map(({ msme, accessLevel, isDefault }) => (
-//             <div
-//               key={msme.id}
-//               onClick={() => handleMsmeClick(msme.subdomain)}
-//               className="cursor-pointer"
-//             >
-//               <Card className="p-4 hover:shadow-md transition-shadow bg-zinc-800">
-//                 <div className="space-y-1">
-//                   <div className="flex justify-between items-start">
-//                     <h3 className="font-medium text-white">{msme.name}</h3>
-//                     <span className="text-xs bg-zinc-200 text-black px-2 py-0.5 rounded-full">
-//                       {accessLevel.charAt(0).toUpperCase() + accessLevel.slice(1)}
-//                     </span>
-//                   </div>
-//                   <p className="text-xs text-muted-foreground">
-//                     {getSubdomainUrl(msme.subdomain)}
-//                   </p>
-//                 </div>
-//               </Card>
-//             </div>
-//           ))}
-//         </div>
-//       </div>
-//     </Card>
-//   );
+         <div className="space-y-3">
+           {msmes.map(({ msme, accessLevel, isDefault }) => (
+             <div
+               key={msme.id}
+               onClick={() => handleMsmeClick(msme.subdomain)}
+               className="cursor-pointer"
+             >
+               <Card className="p-4 hover:shadow-md transition-shadow bg-zinc-800">
+                 <div className="space-y-1">
+                   <div className="flex justify-between items-start">
+                     <h3 className="font-medium text-white">{msme.name}</h3>
+                     <span className="text-xs bg-zinc-200 text-black px-2 py-0.5 rounded-full">
+                       {accessLevel.charAt(0).toUpperCase() + accessLevel.slice(1)}
+                     </span>
+                   </div>
+                   <p className="text-xs text-muted-foreground">
+                     {getSubdomainUrl(msme.subdomain)}
+                   </p>
+                 </div>
+               </Card>
+             </div>
+           ))}
+         </div>
+       </div>
+    </Card>
+  );
 }

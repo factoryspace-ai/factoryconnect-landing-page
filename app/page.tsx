@@ -1,40 +1,40 @@
 "use client";
 
-// import { Button } from "@/components/ui/button";
-// import { SignInButton, SignUpButton, useAuth } from "@clerk/nextjs";
-// import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { SignInButton, SignUpButton, useAuth } from "@clerk/nextjs";
+import { Card } from "@/components/ui/card";
 import { MsmeList } from "@/components/msme/msme-list";
 import { Navbar } from "@/components/layout/navbar";
 import { Spotlight } from "@/components/ui/spotlight";
 
 export default function Home() {
-  // const { isSignedIn, isLoaded } = useAuth();
+  const { isSignedIn, isLoaded } = useAuth();
 
-  // const LoginForm = () => (
-  //   <Card className="p-6 w-full shadow-lg">
-  //     <div className="space-y-6">
-  //       <div>
-  //         <h2 className="text-xl font-semibold mb-6">Log In</h2>
-  //         <div className="space-y-4">
-  //           <SignInButton mode="modal">
-  //             <Button className="w-full bg-black text-white hover:bg-black/90" size="lg">
-  //               Sign In to Factoryspace
-  //               <span className="ml-2">→</span>
-  //             </Button>
-  //           </SignInButton>
+  const LoginForm = () => (
+    <Card className="p-6 w-full shadow-lg">
+      <div className="space-y-6">
+        <div>
+          <h2 className="text-xl font-semibold mb-6">Log In</h2>
+          <div className="space-y-4">
+            <SignInButton mode="modal">
+              <Button className="w-full bg-black text-white hover:bg-black/90" size="lg">
+                Sign In to Factoryspace
+                <span className="ml-2">→</span>
+              </Button>
+            </SignInButton>
 
-  //           <div className="flex flex-col items-center gap-2 text-sm mt-4">
-  //             <SignUpButton mode="modal">
-  //               <button className="text-primary hover:underline">
-  //                 Register Now
-  //               </button>
-  //             </SignUpButton>
-  //           </div>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   </Card>
-  // );
+            <div className="flex flex-col items-center gap-2 text-sm mt-4">
+              <SignUpButton mode="modal">
+                <button className="text-primary hover:underline">
+                  Register Now
+                </button>
+              </SignUpButton>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Card>
+  );
 
   return (
     <div className="w-full flex md:items-center md:justify-center bg-black/[0.96] antialiased bg-grid-white/[0.02] relative overflow-hidden">

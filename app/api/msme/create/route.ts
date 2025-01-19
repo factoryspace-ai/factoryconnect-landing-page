@@ -60,8 +60,8 @@ export async function POST(req: Request) {
     await db.insert(userMsme).values({
       userId: dbUser.id,
       msmeId: createdMsme.id,
+      email: dbUser.email.toLowerCase(),
       accessLevel: "admin",
-      isDefault: true,
     });
 
     return NextResponse.json(createdMsme);

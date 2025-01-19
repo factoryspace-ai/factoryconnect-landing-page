@@ -1,10 +1,10 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-// import { SignInButton, SignUpButton, UserButton, useAuth } from "@clerk/nextjs";
+import { SignInButton, SignUpButton, UserButton, useAuth } from "@clerk/nextjs";
 
 export function Navbar() {
-  // const { isSignedIn } = useAuth();
+  const { isSignedIn } = useAuth();
 
   return (
     <header className="w-full py-4 border-b border-gray-700 text-white">
@@ -12,7 +12,7 @@ export function Navbar() {
         <div className="flex items-center">
           <span className="font-semibold text-xl">FactorySpace</span>
         </div>
-{/* 
+
         <div className="flex items-center gap-6">
           {isSignedIn ? (
             <UserButton />
@@ -30,7 +30,7 @@ export function Navbar() {
               </SignUpButton>
             </>
           )}
-        </div> */}
+        </div>
       </div>
     </header>
   );

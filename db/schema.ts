@@ -42,16 +42,16 @@ export const user = pgTable("User", {
 export const userMsme = pgTable("UserMsme", {
   id: uuid("id").primaryKey().defaultRandom(),
   userId: uuid("user_id")
-    .notNull()
     .references(() => user.id, { onDelete: "cascade" }),
+  email: varchar({ length: 255 }).notNull().unique(),
   msmeId: uuid("msme_id")
     .notNull()
     .references(() => msme.id, { onDelete: "cascade" }),
+  department: varchar({ length: 255 }).default(""),
   accessLevel: accessLevelEnum("access_level").notNull().default('employee'),
-  isDefault: boolean("is_default").default(false), // Indicates if this is the user's default MSME
   joinedAt: timestamp("joined_at").notNull().defaultNow(),
-  invitedBy: uuid("invited_by").references(() => user.id), // Track who invited the user
-  status: varchar("status", { length: 20 }).notNull().default('active'), // active, suspended, etc.
+  invitedBy: uuid("invited_by").references(() => user.id),
+  status: varchar("status", { length: 20 }).notNull().default('active'),
 });
 
 export const msmeWaitingList = pgTable("MsmeWaitingList", {
