@@ -48,7 +48,8 @@ export const userMsme = pgTable("UserMsme", {
     .notNull()
     .references(() => msme.id, { onDelete: "cascade" }),
   department: varchar({ length: 255 }).default(""),
-  accessLevel: accessLevelEnum("access_level").notNull().default('employee'),
+  // accessLevel: accessLevelEnum("access_level").notNull().default('employee'),
+  accessLevel: varchar({ length: 20 }).notNull().default('operator'),
   joinedAt: timestamp("joined_at").notNull().defaultNow(),
   invitedBy: uuid("invited_by").references(() => user.id),
   status: varchar("status", { length: 20 }).notNull().default('active'),
