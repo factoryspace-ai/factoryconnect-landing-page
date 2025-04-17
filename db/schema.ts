@@ -5,19 +5,37 @@ import {
   uuid,
   text,
   boolean,
-  pgEnum
+  pgEnum,
+  integer
 } from "drizzle-orm/pg-core";
 
 // Define access level enum
 export const accessLevelEnum = pgEnum('access_level', ['admin', 'employee']);
 
-//msme schema
 export const msme = pgTable("Msme", {
   id: uuid("id").primaryKey().defaultRandom(),
-  name: varchar({ length: 255 }).notNull(),
-  subdomain: varchar({ length: 63 }).notNull().unique(),
+  name: varchar({length: 255}).notNull(),
+  subdomain: varchar({ length: 63 }).unique(),
   createdAt: timestamp("created_at").defaultNow(),
+  description: text("description"),
+  address: text("address"),
+  city: varchar({ length: 255 }),
+  state: varchar({ length: 255 }),
+  country: varchar({ length: 255 }),
+  zipCode: varchar({ length: 255 }),
+  contact_number: varchar({ length: 255 }),
+  contact_email: varchar({ length: 255 }),
+  year_established: varchar({ length: 255 }),
+  working_hours: varchar({ length: 255 }),
+  logo: text("logo"),
+  industry: varchar({ length: 255 }),
+  services: text("services"),
+  ratings: integer("ratings"),
+  pricing: text("pricing"),
+  gst: varchar({ length: 255 }),
+  isActive: boolean("is_active").notNull().default(false),
 });
+
 
 // user Schema
 export const user = pgTable("User", {
