@@ -6,7 +6,8 @@ import { cn } from "@/lib/utils"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { useState, useEffect } from "react"
 
-interface TopNavbarProps extends React.HTMLAttributes<HTMLElement> {
+interface TopNavbarProps {
+  className?: string;
   items: {
     id: string
     title: string
