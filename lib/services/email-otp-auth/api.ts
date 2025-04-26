@@ -10,6 +10,9 @@ export class EmailOtpAuthService {
             // Send data in the body
             body: JSON.stringify({ email, invite_token }),
         });
+        console.log(response);
+        const data = await response.json();
+        console.log(data);
         if (!response.ok) {
             // Try to parse error message from backend if available
             let errorMsg = `HTTP error! status: ${response.status}`;
@@ -20,7 +23,7 @@ export class EmailOtpAuthService {
             throw new Error(errorMsg);
         }
         // send-otp might return just a success message or {}
-        return await response.json();
+        return data;
     }
 
     // Sends email, otp, and invite_token in the BODY
