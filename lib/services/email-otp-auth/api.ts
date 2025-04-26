@@ -11,19 +11,19 @@ export class EmailOtpAuthService {
             body: JSON.stringify({ email, invite_token }),
         });
         console.log(response);
-        const data = await response.json();
-        console.log("data", data);
+        
         if (!response.ok) {
             // Try to parse error message from backend if available
             let errorMsg = `HTTP error! status: ${response.status}`;
             try {
                 const errorBody = await response.json();
                 errorMsg = errorBody.detail || errorBody.message || errorMsg;
+                console.log("error", errorBody);
             } catch (e) { /* Ignore parsing error */ }
             throw new Error(errorMsg);
         }
         // send-otp might return just a success message or {}
-        return data;
+        return await response.json();
     }
 
     // Sends email, otp, and invite_token in the BODY
