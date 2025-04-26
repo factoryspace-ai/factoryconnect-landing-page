@@ -12,7 +12,7 @@ export class EmailOtpAuthService {
         });
         console.log(response);
         const data = await response.json();
-        console.log(data);
+        console.log("data", data);
         if (!response.ok) {
             // Try to parse error message from backend if available
             let errorMsg = `HTTP error! status: ${response.status}`;
