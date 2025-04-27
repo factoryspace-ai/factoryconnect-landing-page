@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 export async function POST(request: NextRequest) {
     const header = request.headers;
     const body = await request.json();
+    try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/rfq/auth/request_otp`, {
         method: 'POST',
         headers: header,
@@ -11,4 +12,8 @@ export async function POST(request: NextRequest) {
     const data = await response.json();
     console.log(data);
     return NextResponse.json(data);
+    } catch (error) {
+        console.error(error);
+        return NextResponse.json({ error: error}, { status: 500 });
+    }
 }
