@@ -1,19 +1,20 @@
 import { clerkMiddleware } from '@clerk/nextjs/server';
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 
-// Define public routes (including our auth flow)
-const isPublicRoute = (req: NextRequest) => {
-  const pathname = req.nextUrl.pathname;
-  return (
-    pathname === '/' ||
-    pathname.startsWith('/auth/') ||
-    pathname.startsWith('/api/msme') ||
-    pathname.startsWith('/api/auth/create-user') ||
-    pathname.startsWith('/api/msme/available') ||
-    pathname.startsWith('/api/external/rfq/subcontractors/not-loggedin') ||
-    pathname.startsWith('/api/external/rfq/quotation')
-  );
-};
+// // Define public routes (including our auth flow)
+// const isPublicRoute = (req: NextRequest) => {
+//   const pathname = req.nextUrl.pathname;
+//   return (
+//     pathname === '/' ||
+//     pathname.startsWith('/auth/') ||
+//     pathname.startsWith('/api/msme') ||
+//     pathname.startsWith('/api/auth/create-user') ||
+//     pathname.startsWith('/api/msme/available') ||
+//     pathname.startsWith('/api/external/rfq/subcontractors/not-loggedin') ||
+//     pathname.startsWith('/api/external/rfq/quotation') ||
+//     pathname.startsWith('*')
+//   );
+// };
 
 export default clerkMiddleware(async (auth, req: any) => {
   const url = req.nextUrl;

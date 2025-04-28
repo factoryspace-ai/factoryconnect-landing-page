@@ -1,15 +1,16 @@
 export const getHeaderNotLoggedIn = (): Record<string, string> => {
     // This function can ONLY run on the client-side after hydration.
     // Make it synchronous as localStorage is synchronous. async is not needed.
-    if (typeof window === 'undefined' || !window.localStorage) {
-         // This case handles server-side execution or environments without localStorage
-        console.error("getHeaderNotLoggedIn: localStorage is not available. Ensure this runs client-side.");
-        throw new Error("Cannot access authentication headers: Not running in a browser environment.");
-    }
+    // if (typeof window === 'undefined' || !window.localStorage) {
+    //      // This case handles server-side execution or environments without localStorage
+    //     console.error("getHeaderNotLoggedIn: localStorage is not available. Ensure this runs client-side.");
+    //     throw new Error("Cannot access authentication headers: Not running in a browser environment.");
+    // }
 
     try {
         // Corrected the key from 'acesss_token' to 'access_token'
         const token = localStorage.getItem('access_token');
+        // console.log("token", token);
 
         if (!token) {
             // More specific error message

@@ -3,7 +3,7 @@ import { Clarification, RFQSubcontractors } from "./types";
 
 export class RFQSubcontractorNotLoggedInApiService {
     static async getRFQCustomers() {
-        const header = await getHeaderNotLoggedIn();
+        const header = getHeaderNotLoggedIn();
         const response = await fetch(`/api/external/rfq/subcontractors/not-loggedin`, {
             method: "GET",
             headers: header,
@@ -13,9 +13,10 @@ export class RFQSubcontractorNotLoggedInApiService {
         }
         return await response.json();
     }
-
+    
     static async getRFQById(rfq_id: number) {
-        const header = await getHeaderNotLoggedIn();
+        const header = getHeaderNotLoggedIn();
+        console.log("header", header);
         const response = await fetch(`/api/external/rfq/subcontractors/not-loggedin/get_by_id?rfq_id=${rfq_id}`, {
             method: "GET",
             headers: header,
@@ -27,7 +28,7 @@ export class RFQSubcontractorNotLoggedInApiService {
     }
     
     static async respondRFQ(data: RFQSubcontractors, rfq_id: number) {
-        const header = await getHeaderNotLoggedIn();
+        const header = getHeaderNotLoggedIn();
         const response = await fetch(`/api/external/rfq/subcontractors/not-loggedin/respond?rfq_id=${rfq_id}`, {
             method: "POST",
             headers: header,
@@ -40,7 +41,7 @@ export class RFQSubcontractorNotLoggedInApiService {
     }
 
     static async clarifyRFQ(data: Clarification, rfq_id: number) {
-        const header = await getHeaderNotLoggedIn();
+        const header = getHeaderNotLoggedIn();
         const response = await fetch(`/api/external/rfq/subcontractors/not-loggedin/clarify?rfq_id=${rfq_id}`, {
             method: "POST",
             headers: header,
@@ -53,7 +54,7 @@ export class RFQSubcontractorNotLoggedInApiService {
     }
 
     static async getClarifications(rfq_id: number) {
-        const header = await getHeaderNotLoggedIn();
+        const header = getHeaderNotLoggedIn();
         const response = await fetch(`/api/external/rfq/subcontractors/not-loggedin/clarify?rfq_id=${rfq_id}`, {
             method: "GET",
             headers: header,

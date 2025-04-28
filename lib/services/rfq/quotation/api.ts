@@ -2,7 +2,7 @@ import { getHeaderNotLoggedIn } from "@/lib/getHeader";
 
 export class RFQQuotationApiService {
     static async getRFQQuotation(quotation_id: number) {
-        const headers = await getHeaderNotLoggedIn();
+        const headers = getHeaderNotLoggedIn();
         const response = await fetch(`/api/external/rfq/quotation?quotation_id=${quotation_id}`, {
             method: "GET",
             headers: headers
