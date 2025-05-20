@@ -15,6 +15,15 @@ export default function QuotationPage() {
   const [rfqData, setRfqData] = useState<RFQDetails | null>(null)
   const [name, setName] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true)
+  const [ownMsmeDetails, setOwnMsmeDetails] = useState<any>(null);
+
+  const msmeDetails  = async () => {
+    const email = localStorage.getItem("email");
+    const response = await fetch(`/api/msme/own?email=${email}`);
+    const data = await response.json();
+    console.log(data);
+    setOwnMsmeDetails(data);
+  }
 
    // Fetch RFQ Data once tenantId is available and rfqIdParam is valid
    useEffect(() => {
@@ -25,6 +34,7 @@ export default function QuotationPage() {
        setIsLoading(false); // Stop loading if RFQ ID is invalid
     }
     // Don't fetch if tenantId is still null
+    msmeDetails();
   }, [rfqIdParam])
 
   const fetchRFQData = async (id: number) => {
@@ -68,7 +78,7 @@ export default function QuotationPage() {
               <Quotation
                   rfqData={rfqData}
                   quotationId={quotationId}
-                  msmeName={name!}
+                  msmeName={ownMsmeDetails.name}
               />
           </div>
       </>

@@ -151,7 +151,6 @@ export const Quotation: React.FC<QuotationProps> = ({
       setAvailableMsmes(data.msmes || []);
     } catch (error) {
       console.error(error);
-      // Non-critical, form can still work
     }
   };
 
@@ -171,7 +170,7 @@ export const Quotation: React.FC<QuotationProps> = ({
         sellerStateName: seller?.state || "",
         sellerCountry: seller?.country || "",
         sellerContact: seller?.contact_number || "",
-        sellerEmail: seller?.contact_email || "",
+        sellerEmail: localStorage.getItem("email") || "",
         sellerGSTIN: "",
       };
 
@@ -343,12 +342,7 @@ export const Quotation: React.FC<QuotationProps> = ({
                                 <h1 className="text-2xl font-bold text-gray-800 tracking-tight">QUOTATION</h1>
                                 <div className="mt-4 text-sm text-gray-700">
                                     <p className="font-semibold text-base">{form.watch("SellerName")}</p>
-                                    <p className="mt-1">{form.watch("sellerAddress1")}</p>
-                                    <p>{form.watch("sellerCityName")}, {form.watch("sellerStateName")} {form.watch("sellerPincode")}</p>
-                                    <p>{form.watch("sellerCountry")}</p>
-                                    <p className="mt-2">Phone: {form.watch("sellerContact")}</p>
                                     <p>Email: {form.watch("sellerEmail")}</p>
-                                    {form.watch("sellerGSTIN") && <p className="mt-2">GSTIN: {form.watch("sellerGSTIN")}</p>}
                                 </div>
                             </div>
                             

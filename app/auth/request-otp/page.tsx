@@ -41,6 +41,7 @@ function RequestOTPContent() {
         setLoading(true);
         try {
             // Corrected: Send data in the body
+            localStorage.setItem("email", email);
             await EmailOtpAuthService.sendOtp(email, inviteToken);
             toast.success("OTP sent successfully! Please check your email.");
             // Navigate to verify OTP page, passing email, token, and redirectUrl

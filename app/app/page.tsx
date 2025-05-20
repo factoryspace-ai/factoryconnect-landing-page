@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation"
 import { TopNavbar } from "@/components/simplified/top-navbar"
 import { FileText, Settings, Users, BarChart, MessageSquare } from "lucide-react"
 import RFQComponent from "@/components/rfq"
+import { Button } from "@/components/ui/button"
 
 export default function SettingsProfilePage() {
     const router = useRouter();
@@ -27,6 +28,15 @@ export default function SettingsProfilePage() {
         router.push(`/simplified?${params.toString()}`, { scroll: false });
     };
 
+    const handleLogout = () => {
+        // Clear all cookies
+        // document.cookie.split(";").forEach(function(c) {
+        //     document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+        // }); 
+        localStorage.removeItem("access_token");
+        router.push("/");
+    }
+
     const renderTabContent = () => {
         switch (activeTab) {
             // case "production-orders":
@@ -42,11 +52,12 @@ export default function SettingsProfilePage() {
 
     return (
         <div className="space-y-4">
-            <div>
+            <div className="flex justify-between items-center">
                 <h3 className="text-lg font-medium">Simplified View</h3>
                 {/* <p className="text-sm text-muted-foreground">
                     Making your work easier.
                 </p> */}
+                <Button variant="outline" onClick={handleLogout}> Logout </Button>
             </div>
             <Separator />
             
