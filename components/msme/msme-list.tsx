@@ -14,8 +14,6 @@ interface MSME {
     name: string;
     subdomain: string;
   };
-  accessLevel: "admin" | "employee";
-  isDefault: boolean;
 }
 
 export function MsmeList() {
@@ -89,7 +87,7 @@ export function MsmeList() {
         </div>
 
          <div className="space-y-3">
-           {msmes.map(({ msme, accessLevel, isDefault }) => (
+           {msmes.map(({ msme }) => (
              <div
                key={msme.id}
                onClick={() => handleMsmeClick(msme.subdomain)}
@@ -99,9 +97,6 @@ export function MsmeList() {
                  <div className="space-y-1">
                    <div className="flex justify-between items-start">
                      <h3 className="font-medium text-white">{msme.name}</h3>
-                     <span className="text-xs bg-zinc-200 text-black px-2 py-0.5 rounded-full">
-                       {accessLevel.charAt(0).toUpperCase() + accessLevel.slice(1)}
-                     </span>
                    </div>
                    <p className="text-xs text-muted-foreground">
                      {getSubdomainUrl(msme.subdomain)}

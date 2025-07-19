@@ -19,7 +19,7 @@ export default function RootLayout({
       <body>
         <ClerkProvider>
           <Toaster />
-          <UserCreator />
+          {/* <UserCreator /> */}
           {children}
         </ClerkProvider>
       </body>
