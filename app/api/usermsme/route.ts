@@ -39,12 +39,11 @@ export async function GET(req: NextRequest) {
         //     method: "GET",
         //     headers: header,
         // });
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/usmsm/usermsme?skip=1&limit=100`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/usmsm/usermsme/?skip=1&limit=100`, {
             method: "GET",
             headers: header,
         });
         const data = await response.json()
-        console.log(data)
         return NextResponse.json(data, { status: response.status })
     } catch (error) {
         console.log(error)
