@@ -19,7 +19,7 @@ export async function GET(req: NextRequest) {
         //     method: "GET",
         //     headers: header,
         // });
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/usmsm/msme/?skip=0&limit=100`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/usmsm/msme/?skip=0&limit=100000`, {
             method: "GET",
             headers: header,
         });

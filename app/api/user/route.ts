@@ -31,7 +31,7 @@ export async function GET(req: NextRequest) {
             return NextResponse.json(data, {status: response.status})
         }
 
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/usmsm/user/`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/usmsm/user/?skip=0&limit=100000`, {
             method: "GET",
             headers: header,
         });
