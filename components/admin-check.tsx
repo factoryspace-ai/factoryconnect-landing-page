@@ -1,10 +1,11 @@
 "use client"
+import Unauthorized from "@/app/unauthorized/page";
 import { useUser } from "@clerk/nextjs"
 export const AdminCheck = ({ children }: { children: React.ReactNode }) => {
     const { user } = useUser()
-    const isAdmin = user?.publicMetadata.role === 'admin'
+    const isAdmin = user?.publicMetadata.role === 'superadmin'
     if (!isAdmin) {
-        return null
+        return <Unauthorized />
     }
     return (
         <>

@@ -1,8 +1,7 @@
 import { getAuth } from "@clerk/nextjs/server";
-import type { NextApiRequest, NextApiResponse } from 'next'
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextApiRequest, res: NextApiResponse) {
+export async function GET(req: NextRequest) {
     const { getToken } = getAuth(req)
 
     if (!getToken) {
