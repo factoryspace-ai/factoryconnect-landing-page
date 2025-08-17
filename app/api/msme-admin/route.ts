@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
             return NextResponse.json({ error: "Creator User ID is required" }, { status: 400 })
         }
 
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/usmsm/msme?creator_user_id=${creator_user_id}`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/usmsm/msme/?creator_user_id=${creator_user_id}`, {
             method: "POST",
             headers: header,
             body: JSON.stringify(body)
